@@ -12,14 +12,18 @@
     "@oclif/config": "^1.15.1",
     "@oclif/plugin-help": "^3.0.1",
     "axios": "^0.19.2",
+    "chalk": "^4.0.0",
     "cli-ux": "^5.4.6",
     "debug": "^4.1.1",
+    "inquirer": "^7.1.0",
+    "inquirer-search-list": "^1.2.6",
     "tslib": "^1.13.0"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.22.2",
     "@oclif/test": "^1.2.6",
     "@types/chai": "^4.2.11",
+    "@types/inquirer": "^6.5.0",
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.17.24",
     "chai": "^4.2.0",

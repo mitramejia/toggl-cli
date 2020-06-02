@@ -7,5 +7,6 @@
 /yarn.lock
 node_modules
 .env
+.envrc
 .idea
 
