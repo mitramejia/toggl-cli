@@ -4,6 +4,7 @@ import {prompt, registerPrompt} from 'inquirer'
 import {getUserProjects} from '../lib/api/authentication'
 import {Project} from '../lib/api/types'
 import {green} from 'chalk'
+import {disableUrls} from '../lib/url-blocker'
 // Register plugin
 registerPrompt('search-list', require('inquirer-search-list'))
 
@@ -36,6 +37,7 @@ export default class Start extends Command {
         const pid = this.getProjectIdByName(selectedProjectName, projects)
         // Call API to Start time entry
         await startTimeEntry({description: taskDescription, pid})
+        disableUrls()
         this.log(green(`Started task '${taskDescription}' on ${selectedProjectName}`))
       } catch (error) {
         this.error(`${error.message}`)
