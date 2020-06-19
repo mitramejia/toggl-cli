@@ -3,7 +3,7 @@ import {User} from './types'
 import {isUndefined} from 'lodash'
 import {TOGGL_API_TOKEN_URL, TOGGL_API_URL} from './constants'
 
-export const getTogglApiUrl = (path = '') => `${TOGGL_API_URL}/${path}`
+export const getTogglApiUrl = (path = '') => `${TOGGL_API_URL}${path}`
 
 export const getUserAuth = () => {
   const apiToken = process.env.TOGGL_API_TOKEN
@@ -19,9 +19,9 @@ export const getUserAuth = () => {
   }
 }
 
-const paths = {
-  sessions: 'sessions',
-  me: 'me',
+export const paths = {
+  sessions: '/sessions',
+  me: '/me',
 }
 
 export const getCurrentUser = async () => {
