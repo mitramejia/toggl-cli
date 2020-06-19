@@ -1,8 +1,8 @@
 import {expect, test} from '@oclif/test'
-import factories from '../../../src/lib/api/factories'
-import {paths as authPaths} from '../../../src/lib/api/authentication'
-import {TOGGL_API_URL} from '../../../src/lib/api/constants'
-import {paths as timeEntriesPaths} from '../../../src/lib/api/time-entries'
+import factories from '../../../src/api/factories'
+import {paths as authPaths} from '../../../src/api/authentication'
+import {TOGGL_API_URL} from '../../../src/api/constants'
+import {paths as timeEntriesPaths} from '../../../src/api/time-entries'
 import EntryStart, {StartCommandAnswers} from '../../../src/commands/entry/start'
 import * as inquirer from 'inquirer'
 

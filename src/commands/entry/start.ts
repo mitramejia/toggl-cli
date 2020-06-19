@@ -1,10 +1,10 @@
 import {Command, flags} from '@oclif/command'
-import {createTimeEntry}  from '../../lib/api/time-entries'
+import {createTimeEntry}  from '../../api/time-entries'
 import {prompt}  from 'inquirer'
-import {getUserProjects} from '../../lib/api/authentication'
-import {Project} from '../../lib/api/types'
-import {disableUrls} from '../../lib/url-blocker'
-import {getProjectIdByName} from '../../lib/api/utils'
+import {getUserProjects} from '../../api/authentication'
+import {Project} from '../../api/types'
+import {disableUrls} from '../../url-blocker'
+import {getProjectIdByName} from '../../api/utils'
 
 export interface StartCommandAnswers {
   selectedProject: string; timeEntryDesc: string;
