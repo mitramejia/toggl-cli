@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from 'axios'
-import {getTogglApiUrl, getUserAuth} from './authentication'
+import {getTogglApiUrl, getUserAuth} from './auth'
 
 export const paths = {
   start: '/time_entries/start',

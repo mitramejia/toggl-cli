@@ -1,7 +1,7 @@
 import {Command, flags} from '@oclif/command'
 import {createTimeEntry}  from '../../api/time-entries'
 import {prompt}  from 'inquirer'
-import {getUserProjects} from '../../api/authentication'
+import {getUserProjects} from '../../api/auth'
 import {Project} from '../../api/types'
 import {disableUrls} from '../../url-blocker'
 import {getProjectIdByName} from '../../api/utils'
