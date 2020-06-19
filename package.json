@@ -60,7 +60,10 @@
     "bin": "toggl",
     "plugins": [
       "@oclif/plugin-help"
-    ]
+    ],
+    "hooks": {
+      "init": "./src/lib/hooks/init/auth"
+    }
   },
   "repository": "https://github.com/mitramejia/toggl-cli/issues",
   "scripts": {
@@ -71,5 +74,5 @@
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md"
   },
-  "types": "src/index.d.ts"
+  "types": "src/lib/index.d.ts"
 }
