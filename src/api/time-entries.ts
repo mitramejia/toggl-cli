@@ -1,9 +1,8 @@
 import axios, {AxiosResponse} from 'axios'
-import {User} from './types'
 import {getTogglApiUrl, getUserAuth} from './authentication'
 
-const paths = {
-  start: 'time_entries/start',
+export const paths = {
+  start: '/time_entries/start',
 }
 
 interface StartTimeEntryRequest {
@@ -25,7 +24,7 @@ interface TimeEntry {
     created_with?: string;
 }
 
-export const startTimeEntry = async ({description, pid, tags = [], created_with = 'toggl-cli'}: StartTimeEntryRequest) => {
+export const createTimeEntry = async ({description, pid, tags = [], created_with = 'toggl-cli'}: StartTimeEntryRequest) => {
   const auth = getUserAuth()
   const response = await axios.post<StartTimeEntryRequest, AxiosResponse<{data: TimeEntry}>>(
     getTogglApiUrl(paths.start),

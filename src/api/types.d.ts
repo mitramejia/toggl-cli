@@ -53,5 +53,36 @@ export interface User {
         email: string;
         retention: number;
         tasks: any[];
+        openid_email?: string;
+        sidebar_piechart?: boolean;
+        should_upgrade?: boolean;
+        record_timeline?: boolean;
+        timeline_experiment?: boolean;
+        achievements_enabled?: boolean;
+        openid_enabled?: boolean;
+        timeline_enabled?: boolean;
+        send_product_emails?: boolean;
+        send_weekly_report?: boolean;
+        send_timer_notifications?: boolean;
+        last_blog_entry?: string;
+        invitation?: {};
     };
+}
+
+export interface TimeEntry {
+    id: number;
+    pid: number;
+    wid: number;
+    billable: boolean;
+    start: string;
+    duration: number;
+    description: string;
+    tags: string[];
+}
+
+export interface Client {
+    id: number;
+    wid: number;
+    name: string;
+    at: string;
 }
