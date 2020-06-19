@@ -1,6 +1,8 @@
-import {expect, test} from '@oclif/test'
+
+import
+{expect, test} from '@oclif/test'
 import factories from '../../../src/api/factories'
-import {paths as authPaths} from '../../../src/api/authentication'
+import {paths as authPaths} from '../../../src/api/auth'
 import {TOGGL_API_URL} from '../../../src/api/constants'
 import {paths as timeEntriesPaths} from '../../../src/api/time-entries'
 import EntryStart, {StartCommandAnswers} from '../../../src/commands/entry/start'
