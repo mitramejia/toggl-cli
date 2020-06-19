@@ -6,7 +6,7 @@
   "bin": {
     "toggl": "./bin/run"
   },
-  "bugs": "https://github.com/mitramejia/https://github.com/mitramejia/toggl-cli/issues",
+  "bugs": "https://github.com/mitramejia/toggl-cli/issues",
   "dependencies": {
     "@oclif/command": "^1.6.1",
     "@oclif/config": "^1.15.1",
@@ -15,6 +15,8 @@
     "chalk": "^4.0.0",
     "cli-ux": "^5.4.6",
     "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "hostile": "^1.3.2",
     "inquirer": "^7.1.0",
     "inquirer-search-list": "^1.2.6",
     "tslib": "^1.13.0"
@@ -30,8 +32,10 @@
     "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.1.0",
+    "fishery": "^0.3.0",
     "globby": "^10.0.2",
     "mocha": "^5.2.0",
+    "nock": "^12.0.3",
     "nyc": "^14.1.1",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.3"
@@ -45,20 +49,20 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/mitramejia/https://github.com/mitramejia/toggl-cli",
+  "homepage": "https://github.com/mitramejia/toggl-cli/issues",
   "keywords": [
     "oclif"
   ],
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "oclif": {
-    "commands": "./lib/commands",
+    "commands": "./src/commands",
     "bin": "toggl",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
-  "repository": "mitramejia/https://github.com/mitramejia/toggl-cli",
+  "repository": "https://github.com/mitramejia/toggl-cli/issues",
   "scripts": {
     "toggl": "./bin/run",
     "postpack": "rm -f oclif.manifest.json",
@@ -67,5 +71,5 @@
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md"
   },
-  "types": "lib/index.d.ts"
+  "types": "src/index.d.ts"
 }
