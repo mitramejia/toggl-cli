@@ -1,10 +1,13 @@
 import {Command, flags} from '@oclif/command'
-import {createTimeEntry}  from '../../api/time-entries'
+import {startTimeEntry}  from '../../api/time-entries'
 import {prompt}  from 'inquirer'
 import {getUserProjects} from '../../api/auth'
 import {Project} from '../../api/types'
-import {disableUrls} from '../../url-blocker'
 import {getProjectIdByName} from '../../api/utils'
+import {Commands} from '../../api/constants'
+import * as inquirer from 'inquirer'
+import {green} from 'chalk'
+inquirer.registerPrompt('search-list', require('inquirer-search-list'))
 
 export interface StartCommandAnswers {
   selectedProject: string; timeEntryDesc: string;
@@ -18,14 +21,14 @@ export default class EntryStart extends Command {
       entry: 'Entry description',
       project: 'Select a Project',
     },
-    entryStarted: (entryDesc: string, projectName: string) => `Started task '${entryDesc}' on ${projectName}`,
+    entryStarted: (entryDesc: string, projectName: string) => green(`Started time entry '${entryDesc}' on ${projectName}`),
   }
 
   static flags = {
     help: flags.help({char: 'h'}),
   }
 
-  static examples = ['toggl start']
+  static examples = [`toggl ${Commands.EntryStart}`]
 
   private async promptQuestions(projects: Project[]) {
     const questions = [
@@ -42,10 +45,11 @@ export default class EntryStart extends Command {
       const {selectedProject, timeEntryDesc} = await this.promptQuestions(projects)
       const pid = getProjectIdByName(selectedProject, projects)
       // Call API to Start time entry
-      await createTimeEntry({description: timeEntryDesc, pid})
-      // Disable Banned urls
-      disableUrls()
+      await startTimeEntry({description: timeEntryDesc, pid})
+
       this.log(EntryStart.strings.entryStarted(timeEntryDesc, selectedProject))
+
+      await this.config.runHook(Commands.EntryStart, {id: this.id})
     } catch (error) {
       this.error(error.message)
     }
