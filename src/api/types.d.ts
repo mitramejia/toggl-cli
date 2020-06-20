@@ -77,8 +77,11 @@ export interface TimeEntry {
     start: string;
     duration: number;
     description: string;
-    tags: string[];
+    tags?: string[];
+    created_with?: string;
 }
+
+export type TimeEntryResponse = { data: TimeEntry}
 
 export interface Client {
     id: number;
@@ -86,3 +89,4 @@ export interface Client {
     name: string;
     at: string;
 }
+
