@@ -1,5 +1,6 @@
 import {Factory, register} from 'fishery'
-import {Client, Project, TimeEntry, User} from '../types'
+import {Client, Project, TimeEntry, TimeEntryResponse, User} from '../types'
+import {StartCommandAnswers} from '../../commands/entry/start'
 
 const user = Factory.define<User>(({sequence, factories}) => ({
   since: 3213,
@@ -105,7 +106,7 @@ const project = Factory.define<Project>(({sequence}) => ({
 }))
 
 const timeEntry = Factory.define<TimeEntry>(({sequence}) => ({
-  id: sequence, description: 'Test desc',
+  id: sequence + 1, description: 'Test desc',
   billable: false,
   duration: 423141234,
   pid: sequence,
@@ -114,11 +115,23 @@ const timeEntry = Factory.define<TimeEntry>(({sequence}) => ({
   wid: sequence,
 }))
 
+const startCommandAnswers = Factory.define<StartCommandAnswers>(({factories}) => {
+  const project = factories.project.build()
+  return {
+    selectedProject: project.name,
+    timeEntryDesc: factories.timeEntry.build({pid: project.id}).description,
+  }
+})
+
+const timeEntryResponse = Factory.define<TimeEntryResponse>(({factories}) => ({
+  data: factories.timeEntry.build(),
+}))
+
 const factories = register({
-  user, workspace,
+  user, workspace, startCommandAnswers,
   project,
   client,
-  timeEntry,
+  timeEntry, timeEntryResponse,
 })
 
 export default factories
