@@ -1,17 +1,19 @@
-import {set} from 'hostile'
+import {remove, set} from 'hostile'
 
 const LOCALHOST = '127.0.0.1'
-const BANNED = [
-  'www.facebook.com',
-  'www.instagram.com',
-  'www.youtube.com',
-]
 
-export const disableUrls =  () => {
-  BANNED.forEach(url => {
-    set(LOCALHOST, url,  err => {
+export const disableUrls = (bannedUrls: string[]) => {
+  bannedUrls.forEach(url => {
+    set(LOCALHOST, url, err => {
       if (err) throw err
     })
   })
 }
 
+export const enableUrls = (bannedUrls: string[]) => {
+  bannedUrls.forEach(url => {
+    remove(LOCALHOST, url, err => {
+      if (err) throw err
+    })
+  })
+}
