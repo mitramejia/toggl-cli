@@ -30,13 +30,11 @@ export default class EntryStart extends Command {
 
   static examples = [`toggl ${Commands.EntryStart}`]
 
-  private async promptQuestions(projects: Project[]) {
-    const questions = [
+  private promptQuestions = async (projects: Project[]) =>
+    prompt<StartCommandAnswers>([
       {type: 'input', name: 'timeEntryDesc', message: EntryStart.strings.prompts.entry},
       {type: 'search-list', choices: projects.map(p => p.name), name: 'selectedProject', message: EntryStart.strings.prompts.project},
-    ]
-    return prompt<StartCommandAnswers>(questions)
-  }
+    ])
 
   async run() {
     try {

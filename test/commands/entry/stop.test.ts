@@ -19,7 +19,7 @@ describe(Commands.EntryStop, () => {
   )
   .command([Commands.EntryStop])
   .catch(EntryStop.strings.noTimeEntryRunning)
-  .it('errors out if there is no current time entry')
+  .it('shows error if there is no current time entry')
 
   test
   .stdout()
