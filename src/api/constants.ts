@@ -7,4 +7,5 @@ export const TOGGL_API_TOKEN_NOT_SET_ERROR = yellow(`TOGGL_API_TOKEN env variabl
 export enum Commands {
     EntryStart = 'entry:start',
     EntryStop = 'entry:stop',
+    Current = 'current'
 }

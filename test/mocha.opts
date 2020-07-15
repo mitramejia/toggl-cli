@@ -3,4 +3,4 @@
 --recursive
 --reporter spec
 --timeout 5000
---file ./test/setup 
+--file ./test/helpers/setup.ts

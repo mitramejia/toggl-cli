@@ -1,7 +1,7 @@
 {
   "name": "toggl-cli",
   "description": "A toggl cli",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "Mitra Mejia",
   "bin": {
     "toggl": "./bin/run"
@@ -75,8 +75,10 @@
     "toggl": "./bin/run",
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
+    "eslint:fix": "eslint . --fix --ext .ts --config .eslintrc",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "test": "env FORCE_COLOR=0 nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "test:watch": "env FORCE_COLOR=0 nyc --extension .ts mocha --watch --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md"
   },
   "types": "src/lib/index.d.ts"
