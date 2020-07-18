@@ -1,11 +1,18 @@
+import DateTimeFormat = Intl.DateTimeFormat;
+
 interface Project {
     wid: number;
-    at: string;
     color: string;
+    hex_color: string;
     name: string;
     active: boolean;
     id: number;
     billable: boolean;
+    auto_estimates: false;
+    actual_hours: 20;
+    at: string;
+    created_at: string;
+
 }
 
 interface Workspace {

@@ -23,8 +23,8 @@ describe(Commands.Current, () => {
   )
   .command([Commands.Current])
   .it('shows current entry description and project', ctx => {
-    const currentTimeEntry = Current.strings.currentEntry(
-      timeEntryResponse.data.description,
+    const currentTimeEntry = Current.stdout.entry(
+      timeEntryResponse.data,
       currentProject.name
     )
     expect(ctx.stdout).to.contain(currentTimeEntry)
@@ -37,7 +37,7 @@ describe(Commands.Current, () => {
     .get(entriesPaths.current).reply(200, undefined)
   )
   .command([Commands.Current])
-  .it(`shows "${Current.strings.noCurrentEntry}" if there is no current entry`, ctx => {
-    expect(ctx.stdout).to.contain(Current.strings.noCurrentEntry)
+  .it(`shows "${Current.stdout.noEntry}" if there is no current entry`, ctx => {
+    expect(ctx.stdout).to.contain(Current.stdout.noEntry)
   })
 })
