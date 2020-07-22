@@ -1,6 +1,5 @@
 import axios from 'axios'
 import {getTogglApiUrl, getUserAuth} from './auth'
-import {TimeEntry, TimeEntryResponse} from './types'
 
 export const paths = {
   start: '/time_entries/start',
