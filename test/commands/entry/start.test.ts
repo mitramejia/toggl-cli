@@ -1,10 +1,9 @@
 
-import
-{expect, test} from '@oclif/test'
+import {expect, test} from '@oclif/test'
 import factories from '../../../src/api/factories'
-import {paths as authPaths} from '../../../src/api/auth'
+import {paths as authPaths} from '../../../src/api/user'
 import {Commands, TOGGL_API_URL} from '../../../src/api/constants'
-import {paths as timeEntriesPaths} from '../../../src/api/time-entries'
+import {paths as timeEntriesPaths} from '../../../src/api/time-entry'
 import EntryStart from '../../../src/commands/entry/start'
 import * as inquirer from 'inquirer'
 
@@ -24,10 +23,9 @@ describe(Commands.EntryStart, () => {
   )
   .command([Commands.EntryStart])
   .hook(Commands.EntryStart)
-  .it('starts a new time entry', ctx => {
-    const entryStartedNotification = EntryStart.strings.entryStarted(timeEntryDesc, selectedProject)
-    expect(ctx.stdout).to.contain(entryStartedNotification)
-    expect(ctx.stdout).to.contain('Banned urls disabled')
+  .it('starts a new time entry', ({stdout}) => {
+    const entryStartedNotification = EntryStart.strings.entryStarted(timeEntryDesc, selectedProject.name)
+    expect(stdout).to.contain(entryStartedNotification)
   })
 })
 
