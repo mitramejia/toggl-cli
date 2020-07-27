@@ -1,16 +1,15 @@
 import {Command, flags} from '@oclif/command'
-import {startTimeEntry}  from '../../api/time-entries'
+import {startTimeEntry}  from '../../api/time-entry'
 import {prompt}  from 'inquirer'
-import {getUserProjects} from '../../api/auth'
-import {Project} from '../../api/types'
-import {getProjectIdByName} from '../../api/utils'
 import {Commands} from '../../api/constants'
 import * as inquirer from 'inquirer'
 import {green} from 'chalk'
+import {Project} from '../../..'
+import {getUserProjects} from '../../api/user'
 inquirer.registerPrompt('search-list', require('inquirer-search-list'))
 
 export interface StartCommandAnswers {
-  selectedProject: string; timeEntryDesc: string;
+  selectedProject: Project; timeEntryDesc: string;
 }
 
 export default class EntryStart extends Command {
@@ -32,20 +31,20 @@ export default class EntryStart extends Command {
 
   private promptQuestions = async (projects: Project[]) =>
     prompt<StartCommandAnswers>([
+      // TODO: validate an empty description is not empty
       {type: 'input', name: 'timeEntryDesc', message: EntryStart.strings.prompts.entry},
-      {type: 'search-list', choices: projects.map(p => p.name), name: 'selectedProject', message: EntryStart.strings.prompts.project},
+      {type: 'search-list', choices: projects.map(p => ({name: p.name, value: p})), name: 'selectedProject', message: EntryStart.strings.prompts.project},
     ])
 
   async run() {
     try {
-      // Gather request params
       const projects = await getUserProjects()
+      // prompt user
       const {selectedProject, timeEntryDesc} = await this.promptQuestions(projects)
-      const pid = getProjectIdByName(selectedProject, projects)
-      // Call API to Start time entry
-      await startTimeEntry({description: timeEntryDesc, pid})
 
-      this.log(EntryStart.strings.entryStarted(timeEntryDesc, selectedProject))
+      await startTimeEntry({description: timeEntryDesc, pid: selectedProject.id})
+
+      this.log(EntryStart.strings.entryStarted(timeEntryDesc, selectedProject.name))
 
       await this.config.runHook(Commands.EntryStart, {id: this.id})
     } catch (error) {

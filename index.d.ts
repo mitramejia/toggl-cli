@@ -1,26 +1,39 @@
-interface Project {
+export interface Project {
     wid: number;
-    at: string;
     color: string;
+    hex_color: string;
     name: string;
     active: boolean;
     id: number;
     billable: boolean;
-}
-
-interface Workspace {
-    projects_billable_by_default: boolean;
+    auto_estimates: false;
+    actual_hours: number;
     at: string;
-    rounding_minutes: number;
-    api_token: string;
-    name: string;
-    rounding: number;
-    id: number;
-    default_hourly_rate: number;
-    default_currency: string;
+    created_at: string;
+
 }
 
-interface Tag {
+export interface Workspace {
+    id: number;
+    name: string;
+    profile: number;
+    premium: boolean;
+    admin: boolean;
+    default_currency: string;
+    only_admins_may_create_projects: boolean;
+    only_admins_see_billable_rates: boolean;
+    only_admins_see_team_dashboard: boolean;
+    projects_billable_by_default: boolean;
+    rounding: number;
+    rounding_minutes: number;
+    at: string;
+    logo_url: string;
+    ical_url: string;
+    ical_enabled: boolean;
+    csv_upload: { log_id: number; at: string };
+}
+
+export interface Tag {
     wid: number;
     name: string;
     id: number;
@@ -81,7 +94,7 @@ export interface TimeEntry {
     created_with?: string;
 }
 
-export type TimeEntryResponse = { data: TimeEntry}
+export type TimeEntryResponse = { data: TimeEntry }
 
 export interface Client {
     id: number;

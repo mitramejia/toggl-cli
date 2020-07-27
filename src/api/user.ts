@@ -1,8 +1,8 @@
 import axios from 'axios'
-import {User} from './types'
 import {isUndefined} from 'lodash'
 import {TOGGL_API_URL, TOGGL_API_TOKEN_NOT_SET_ERROR} from './constants'
 import {CLIError} from '@oclif/errors'
+import {User} from '../..'
 
 export const paths = {
   sessions: '/sessions',
