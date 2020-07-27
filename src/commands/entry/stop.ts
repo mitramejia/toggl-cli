@@ -1,5 +1,5 @@
 import {Command, flags} from '@oclif/command'
-import {getCurrentTimeEntry, stopTimeEntry} from '../../api/time-entries'
+import {getCurrentTimeEntry, stopTimeEntry} from '../../api/time-entry'
 import {Commands} from '../../api/constants'
 
 export default class EntryStop extends Command {
