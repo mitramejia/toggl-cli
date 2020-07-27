@@ -1,6 +1,11 @@
 import {registerPrompt} from 'inquirer'
 
-before(async () => {
-  require('dotenv').config()
-  registerPrompt('search-list', require('inquirer-search-list'))
-})
+// Disable chalk for test
+const chalk = require('chalk')
+chalk.level = 0
+
+// Load .env variables
+require('dotenv').config()
+
+// Register inquirer-search-list plugin
+registerPrompt('search-list', require('inquirer-search-list'))
