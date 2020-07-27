@@ -1,6 +1,7 @@
 import {Factory} from 'fishery'
 // TODO: Remove, does not belong here because its a static property of a command not an global entity
 import {StartCommandAnswers} from '../../commands/entry/start'
+import {TimeEntry, TimeEntryResponse} from '../../..'
 
 export const timeEntry = Factory.define<TimeEntry>(({sequence}) => ({
   id: sequence + 1, description: 'Test desc',

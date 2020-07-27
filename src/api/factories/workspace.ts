@@ -1,4 +1,5 @@
 import {Factory} from 'fishery'
+import {Workspace} from '../../..'
 
 export const workspace = Factory.define<Workspace>(({sequence}) => ({
   id: sequence,

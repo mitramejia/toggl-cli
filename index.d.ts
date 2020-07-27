@@ -1,4 +1,4 @@
-interface Project {
+export interface Project {
     wid: number;
     color: string;
     hex_color: string;
@@ -13,7 +13,7 @@ interface Project {
 
 }
 
-interface Workspace {
+export interface Workspace {
     id: number;
     name: string;
     profile: number;
@@ -33,13 +33,13 @@ interface Workspace {
     csv_upload: { log_id: number; at: string };
 }
 
-interface Tag {
+export interface Tag {
     wid: number;
     name: string;
     id: number;
 }
 
-interface User {
+export interface User {
     since: number;
     data: {
         projects: Project[];
@@ -82,7 +82,7 @@ interface User {
     };
 }
 
-interface TimeEntry {
+export interface TimeEntry {
     id: number;
     pid: number;
     wid: number;
@@ -94,9 +94,9 @@ interface TimeEntry {
     created_with?: string;
 }
 
-type TimeEntryResponse = { data: TimeEntry }
+export type TimeEntryResponse = { data: TimeEntry }
 
-interface Client {
+export interface Client {
     id: number;
     wid: number;
     name: string;

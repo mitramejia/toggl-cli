@@ -1,4 +1,5 @@
 import {Factory} from 'fishery'
+import {Client} from '../../..'
 
 export const client = Factory.define<Client>(({sequence}) => ({
   id: sequence,

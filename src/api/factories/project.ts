@@ -1,4 +1,5 @@
 import {Factory} from 'fishery'
+import {Project} from '../../..'
 
 export const project = Factory.define<Project>(({sequence}) => ({
   id: sequence,

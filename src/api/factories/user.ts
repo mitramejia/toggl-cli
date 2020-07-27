@@ -1,4 +1,5 @@
 import {Factory} from 'fishery'
+import {User} from '../../..'
 
 export const user = Factory.define<User>(({sequence, factories}) => ({
   since: 3213,
