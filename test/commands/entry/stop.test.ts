@@ -36,7 +36,6 @@ describe(Commands.EntryStop, () => {
   .it('stops current time entry', ({stdout}) => {
     const entryStoppedNotification = EntryStop.strings.entryStopped(timeEntryResponse.data.description)
     expect(stdout).to.contain(entryStoppedNotification)
-    expect(stdout).to.contain('Banned Urls enabled')
   })
 })
 

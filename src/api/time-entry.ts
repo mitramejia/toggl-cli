@@ -20,7 +20,7 @@ export const getCurrentTimeEntry = async (): Promise<TimeEntry> => {
 }
 
 export interface StartTimeEntryRequest {
-    pid: number;
+    pid?: number;
     description: string;
     tags?: string[];
     created_with?: string;
