@@ -3,7 +3,7 @@ import {user} from './user'
 import {workspace} from './workspace'
 import {client} from './client'
 import {project} from './project'
-import {timeEntry, timeEntryResponse} from './time-entry'
+import {timeEntry, timeEntryResponse, timeEntryWithoutProject} from './time-entry'
 
 const factories = register({
   user,
@@ -11,6 +11,7 @@ const factories = register({
   project,
   client,
   timeEntry,
+  timeEntryWithoutProject,
   timeEntryResponse,
 })
 
