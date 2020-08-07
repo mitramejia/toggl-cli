@@ -1,11 +1,10 @@
-import {register} from 'fishery'
 import {user} from './user'
 import {workspace} from './workspace'
 import {client} from './client'
 import {project} from './project'
 import {timeEntry, timeEntryResponse, timeEntryWithoutProject} from './time-entry'
 
-const factories = register({
+export default {
   user,
   workspace,
   project,
@@ -13,6 +12,4 @@ const factories = register({
   timeEntry,
   timeEntryWithoutProject,
   timeEntryResponse,
-})
-
-export default factories
+}

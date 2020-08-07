@@ -22,7 +22,7 @@ export const timeEntryWithoutProject = Factory.define<TimeEntry>(({sequence}) =>
   wid: sequence,
 }))
 
-export const timeEntryResponse = Factory.define<TimeEntryResponse>(({factories}) => ({
-  data: factories.timeEntry.build(),
+export const timeEntryResponse = Factory.define<TimeEntryResponse>(({associations}) => ({
+  data: associations.data || timeEntry.build(),
 }))
 
