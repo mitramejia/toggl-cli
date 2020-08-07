@@ -2,10 +2,9 @@ import {Command, flags} from '@oclif/command'
 import {bold, yellow} from 'chalk'
 import {Commands} from '../api/constants'
 import {getCurrentTimeEntry} from '../api/time-entry'
-import {formatCurrentTimeEntry} from '../utils/time-entry/formatters'
+import {formatCurrentTimeEntry} from '../utils/time-entry'
 import {TimeEntry} from '../..'
-import {getUserProjects} from '../api/user'
-import {getProjectById} from '../utils/project'
+import {getProjectById, getUserProjects} from '../utils/project'
 
 export default class Current extends Command {
   static description = 'Shows current entry';
@@ -25,7 +24,8 @@ export default class Current extends Command {
 
   private showCurrentTimeEntry = async (timeEntry: TimeEntry) => {
     const projects = await getUserProjects()
-    const project = getProjectById(timeEntry.pid, projects)
+    // TODO: Remove hardcoded id by refactoring entry({timeEntry, project})
+    const project = getProjectById(timeEntry.pid || 1, projects)
     this.log(Current.stdout.entry({timeEntry, project}))
   }
 
