@@ -24,8 +24,7 @@ export default class Current extends Command {
 
   private showCurrentTimeEntry = async (timeEntry: TimeEntry) => {
     const projects = await getUserProjects()
-    // TODO: Remove hardcoded id by refactoring entry({timeEntry, project})
-    const project = getProjectById(timeEntry.pid || 1, projects)
+    const project = timeEntry.pid ? getProjectById(timeEntry.pid, projects) : undefined
     this.log(Current.stdout.entry({timeEntry, project}))
   }
 
