@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {isUndefined} from 'lodash'
-import {TOGGL_API_URL, TOGGL_API_TOKEN_NOT_SET_ERROR} from './constants'
+import {TOGGL_API_TOKEN_NOT_SET_ERROR, TOGGL_API_URL} from './constants'
 import {CLIError} from '@oclif/errors'
 import {User} from '../..'
 
@@ -30,7 +30,3 @@ export const getCurrentUser = async () => {
   return response.data.data
 }
 
-export const getUserProjects = async () => {
-  const user = await getCurrentUser()
-  return user.projects
-}

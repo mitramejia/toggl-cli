@@ -1,7 +1,10 @@
 import {Factory} from 'fishery'
 import {User} from '../../..'
+import {workspace} from './workspace'
+import {project} from './project'
+import {client} from './client'
 
-export const user = Factory.define<User>(({sequence, factories}) => ({
+export const user = Factory.define<User>(({sequence, associations}) => ({
   since: 3213,
   data: {
     id: sequence,
@@ -38,8 +41,8 @@ export const user = Factory.define<User>(({sequence, factories}) => ({
     tags: [],
     tasks: [],
     duration_format: 'improved',
-    workspaces: factories.workspace.buildList(2),
-    projects: factories.project.buildList(5),
-    clients: factories.client.buildList(2),
+    workspaces: associations.data?.workspaces || workspace.buildList(2),
+    projects: associations.data?.projects || project.buildList(5),
+    clients: associations.data?.clients || client.buildList(2),
   },
 }))

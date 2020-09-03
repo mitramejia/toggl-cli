@@ -5,8 +5,8 @@ import {prompt} from 'inquirer'
 import {Commands} from '../../api/constants'
 import {green} from 'chalk'
 import {Project} from '../../..'
-import {getUserProjects} from '../../api/user'
 import {isEmpty} from 'lodash'
+import {getUserProjects} from '../../utils/project'
 
 inquirer.registerPrompt('search-list', require('inquirer-search-list'))
 

@@ -84,7 +84,7 @@ export interface User {
 
 export interface TimeEntry {
     id: number;
-    pid: number;
+    pid?: number;
     wid: number;
     billable: boolean;
     start: string;

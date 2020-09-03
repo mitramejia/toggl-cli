@@ -42,8 +42,7 @@ describe('formats time entries',  () => {
 })
 
 describe('Returns a Project UTF-8 color code followed by it\'s name', () => {
-  const whiteProject = factories.project.build()
-
-  expect(formatProjectName(whiteProject)).to.eql('\nAccounting')
+  const whiteProject = factories.project.build({hex_color: '#ffffff'})
+  expect(formatProjectName(whiteProject)).to.eql(' on Accounting')
 })
 
